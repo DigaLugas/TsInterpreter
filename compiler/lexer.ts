@@ -7,6 +7,7 @@ export enum TokenType{
     OPAREN, CPAREN,
     BINARY_OPERATOR,
     LET,
+    EOF, // <- End Of File
 }
 
 const KEYWORDS: Record<string, TokenType> ={
@@ -29,7 +30,7 @@ function verifySkippable(x: string){
 function verifyInt(x: string){
 const c = x.charCodeAt(0);
 const z = ['0'.charCodeAt(0), '9'.charCodeAt(0)]
-return (c > z[0] && c <= z[1])
+return (c >= z[0] && c <= z[1]);
 }
 export function tokenize(srcCode : string): Token[]{
     const tokens = new Array<Token>();
@@ -71,10 +72,6 @@ export function tokenize(srcCode : string): Token[]{
             }
         }
     }
-
+    tokens.push({value: "EOF",type: TokenType.EOF})
     return tokens;
-}
-const source = await Deno.readTextFile("./test.txt");
-for(const tokens of tokenize(source)){
-    console.log(tokens)
 }

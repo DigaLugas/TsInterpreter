@@ -1,4 +1,4 @@
-import Parser from "./compiler/parser.ts";
+import Parser from "./interpreter/parser.ts";
 
 digasLanguage();
 

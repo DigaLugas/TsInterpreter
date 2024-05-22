@@ -40,7 +40,7 @@ export function tokenize(srcCode : string): Token[]{
             tokens.push(tokenMaker(code.shift(), TokenType.OPAREN))
         } else if(code[0] == ')'){
             tokens.push(tokenMaker(code.shift(), TokenType.CPAREN))
-        } else if(code[0] == '+' || code[0] == '-' || code[0] == '*' || code[0] == '/'){
+        } else if(code[0] == '+' || code[0] == '-' || code[0] == '*' || code[0] == '/' || code[0] == '%'){
             tokens.push(tokenMaker(code.shift(), TokenType.BINARY_OPERATOR))
         } else if(code[0] == '='){
             tokens.push(tokenMaker(code.shift(), TokenType.EQUALS))
